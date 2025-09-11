@@ -37,7 +37,7 @@ so, delete this exception statement from your version."
     150 b 130
     150 U 150
 
-    So stright full height (left B, left L, both U) have 150
+    So straight full height (left B, left L, both U) have 150
     Straight but half height (right b, right a, left d) have 130
     No straight line (both v, left a, right c) have 100
 
@@ -46,8 +46,8 @@ so, delete this exception statement from your version."
     Ctrl+2 - Curve point  ( )
     Ctrl+3 - Corner point [ ]
     Ctrl+4 - Tangent point -->
-    Cltr+Shift+> - goto glyph
-    Ctrl+Shhift+_ - Round to int
+    Ctrl+Shift+> - goto glyph
+    Ctrl+Shift+_ - Round to int
     Ctrl+e - Find problems
 
 - When creating straight lines
@@ -58,7 +58,7 @@ so, delete this exception statement from your version."
 
 - When you create composed font, e.g. D + ˇ = Ď, sometimes width may be 
 too small, "Ď" is ok, but when you create "Ǐ", it might be too narrow. 
-You can't imediatelly move left/right bearings because they are locked
+You can't immediately move left/right bearings because they are locked
 (small lock icon appears next to them). You must first unlock it:
 
   Edit->Unlock reference
@@ -76,9 +76,9 @@ You can't imediatelly move left/right bearings because they are locked
      - Click button "Add lookup"
      - In combo "Type" choose "Pair position (kerning)"
      - In first column "Feature" click on white rectangle, then gray rectangle and choose "Horizontal kerning", type name, e.g. "kern"
-     - Press "ok", dialog will dissapear
+     - Press "ok", dialog will disappear
      - Press "add subtable", name it, choose "horizontal", then choose "pairs"
-     - Click blue <new> and type "T" in first column, "e" in second, -350 in thrird column
+     - Click blue <new> and type "T" in first column, "e" in second, -350 in third column
      - Add other pairs as needed
      - Click ok, ok
      - File->Generate fonts, choose TTF
@@ -104,7 +104,7 @@ You can't imediatelly move left/right bearings because they are locked
     2. Encoding->Add encoding slots->1
        (New slot will be added to the very end, edit it)
     3. Element->Glyph info->Unicode->Glyph name
-       (choose e.h. f_f_i for ffi ligature, I recomend using _ as separator as this will be autodetected later in step 5)
+       (choose e.h. f_f_i for ffi ligature, I recommend using _ as separator as this will be autodetected later in step 5)
     4. Element->Glyph info->Unicode->OT Glyph Class
        (choose "Base lig")	
     5. Close this dialog by pressing "OK" and reopen it
@@ -124,7 +124,7 @@ You can't imediatelly move left/right bearings because they are locked
     When new glyph is done or after you modify glyph, you can
     do certain tasks to make it more correct.
 
-    1. entire glyph should be rounded to int. Usually it 
+    1. The entire glyph should be rounded to int. Usually it 
     already is, but sometimes it slips from int to float. Hit
     Ctrl+A to select all points, then Element->Round->Int
     or press Ctrl+Shift+_
@@ -138,14 +138,14 @@ You can't imediatelly move left/right bearings because they are locked
     with just the right amount of space on the sides. This is 
     called "bearing" and correct values are mentioned above, but
     there is some room for adjustment, it is better to make it
-    consistent among related glyphs than to blindliy obey some
+    consistent among related glyphs than to blindly obey some
     magic numbers.
 
     4. Run tool "Find problems" (Ctrl+E). In the dialog click 
     on "Set all" and on "BB" tab:
 
         - uncheck "Check advance" (because we have variable width font).
-        - uncheck "Check BB above" (esp. for accented glyps because 
+        - uncheck "Check BB above" (esp. for accented glyphs because 
           they all taller than normal glyph)
 
     Then click "Ok", it should say "No problems found".
@@ -157,21 +157,21 @@ You can't imediatelly move left/right bearings because they are locked
     Error: The hint does not control any points
     Solution: Run autohint again (Ctrl+Shift+H)
 
-    Error: The glyps extend left further than desired
+    Error: The glyphs extend left further than desired
     Solution: Adjust bearing (step 3). Sometimes, this is
     not an error, see for example glyph Ħ (Hbar), the bar extends
     left and right, but capital letter is usually followed by
     small letter so it will not interfere.
 
     Error: The selected points are too close to each other.
-    Solution: very often you just accidentaly clicked and added
+    Solution: very often you just accidentally clicked and added
     another point next to already existing point (sometimes
     there is one above other). Zoom in and move them a bit.
     You can merge them by Edit->Merge (Ctrl+M). Or do it by hand.
 
-    ---------[]---------[]-------- 2 poins
+    ---------[]---------[]-------- 2 points
 
-    ---------[]----*----[]-------- add thrid point (add a cornder point)
+    ---------[]----*----[]-------- add third point (add a corner point)
 
     ---------[]         []-------- delete it (del)
 
@@ -185,5 +185,5 @@ You can't imediatelly move left/right bearings because they are locked
 
     6. Make sure tangent points are where they should be (e.g. 
     look at the top of the letter T). Convert those points to 
-    tangent "Point->Tangent" (Ctrl+4). Usefull tools for this
+    tangent "Point->Tangent" (Ctrl+4). Useful tools for this
     is sometimes selecting two points and "Point->Make line".
