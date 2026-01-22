@@ -17,6 +17,7 @@ Osifont is available in 3 different licenses:
 Disclaimer: Only contributors with at least 10% of glyphs contributed can discuss license changes.
 
 ### Recent news
+  - **2026-01-21** - Added ← ↑ → ↓ ↕ ↖ ↗ ↘ ↙ ■ ▲ △ ▶ ▷ ▼ ◀ ◁ ⤡ ⤢ 񡚖 񡚗 Arrows and CAD annotation symbols
   - **2025-09-04** - Added ‖∢∥∦⊕⊖⌱⟂ CAD annotation symbols
   - **2025-05-20** - Added ĈĉĜĝĤĥĴĵŜŝ for Esperanto support
   - **2023-03-22** - fixed italic style map (issue 17)
