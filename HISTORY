@@ -1,3 +1,11 @@
+2026-01-21
+-added ← ↑ → ↓ ↕ ↖ ↗ ↘ ↙(Arrows)
+-added ▷ (Geometric Shapes) to be used as mapping for translation glyph
+-added ■ ▲ △ ▶ ▷ ▼ ◀ ◁ (Geometric Shapes)
+-added ⤡ ⤢ (Supplemental Arrows)
+-added 񡚖 (Private Use Area) Spotface. Looks like characters SP inside couterbore symbol
+-added 񡚗 (Private Use Area) Continuous Feature. Looks like CF in hexagon
+
 2025-09-04
 - added ‖ (General Punctuation)
 - added ∢ ∥ ∦ ⊕ ⊖ ⊥ (Mathematical Operators)
