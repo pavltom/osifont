@@ -15,6 +15,9 @@
         -webkit-font-feature-settings: "liga", "dlig";
         font-feature-settings: "liga", "dlig";
       }
+      div span:nth-of-type(2) {
+        font-feature-settings: "aalt" 1;
+      }
     </style>
   </head>
   <script type="text/javascript">
@@ -23,13 +26,20 @@
     var preview = document.getElementById('preview'),
         i, 
         d,
-        size = [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 25, 25, 26, 30, 36, 48, 72, 112];
+        size = [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 26, 28, 30, 36, 48, 72, 112];
     document.location.hash = '#' + encodeURIComponent(aText);
     preview.contentEditable = true;
     preview.innerHTML = '';
+
+    var selected = document.getElementById('select').selectedOptions[0];
+    var subst = '';
+    if (selected && selected.hasAttribute('altvalue')) {
+        subst = '<span>' + selected.getAttribute('altvalue') + '</span>';
+    }
+
     for (i = 0; i < size.length; i++) {
         d = document.createElement('div');
-        d.innerHTML = size[i] + 'px: ' + aText;
+        d.innerHTML = size[i] + 'px: ' + (subst ? aText.replaceAll('${altvalue}', subst) : aText);
         d.style.fontSize = size[i] + 'px';
         preview.appendChild(d);
     }
@@ -37,7 +47,13 @@
 
   function onLoad() {
     if (document.location.hash) {
-        updatePreview(decodeURIComponent(document.location.hash.substr(1)));
+        var val = decodeURIComponent(document.location.hash.substr(1));
+        var select = document.getElementById('select');
+        select.value = val;
+        if (select.selectedIndex < 0) {
+        select.selectedIndex = 0;
+        }
+        updatePreview(val);
     } else {
         updatePreview('osifont sample, click here and type any text (this area is editable) or choose sample text from combobox.');
     }
@@ -51,13 +67,14 @@
     </noscript>
 
     <nav>
-        <select onchange="updatePreview(this.value)">
+        <select id="select" onchange="updatePreview(this.value)">
             <option value="">Choose sample text here</option>
             <option value="Latin - ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz 0123456789 E-F-C-D-L-T-Y-Z-c-r-">Latin glyphs</option>
             <option value="Special - ()+-×÷*=≠[]{}!?&amp;&quot;'#$/:;\&lt;&gt;@~|%‰°±≤≥∞= 2m² 3m³ ··⋅ –— ¹⁰⁴⁵⁶⁷⁸⁹⁺⁻⁼⁽⁾ ≠≈≡½¼¾№¶">Special glyphs</option>
             <option value="CAD symbols - ℄↔↗↧∠⌀⌒⌓⌖⌭⌯⌰⌳⌲⌴⌵⍵⏊⏤⏥ⒺⒻⓁⓂⓅⓈⓉⓊ□○◎⫽">CAD symbols</option>
             <option value="Arrows - ← ↑ → ↓ ↕ ↖ ↗ ↘ ↙ ⤡ ⤢">Arrows</option>
             <option value="Kerning is [Ȩȩ], ligatures are [Ȼȼ] (on=working, no=not working).">Kerning and ligatures test</option>
+            <option value="Standard glyphs - ${altvalue} / Alternative glyphs - ${altvalue}" altvalue="0 7 I a">Alternative glyphs</option>
             <optgroup label="Fully supported languages (39)">
                 <option value="Afrikaans - Sê ek moet sy zebra en xilofoon in bring, want môre gaan dit reën (ÁáÉéÈèÊêËëÍíÎîÏÓóÔôÚúÛûÝý)">Afrikaans</option>
                 <option value="Albanian - Veçori tipologjike të shqipes së sotme standarde (ÇçËë)">Albanian</option>
